@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Luck Baby 💜</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 10% 10%, #c084fc55, transparent 28%),
+        radial-gradient(circle at 90% 90%, #7c3aed66, transparent 30%),
+        linear-gradient(135deg, #180029, #3b0764, #581c87);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 25px 15px;
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+
+    color: rgba(255,255,255,.35);
+    font-size: 22px;
+
+    pointer-events: none;
+
+    animation: floatHeart linear infinite;
+
+    z-index: 0;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.11);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.4);
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.emoji {
+    font-size: 55px;
+    margin-bottom: 8px;
+
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0 0 12px;
+}
+
+.subtitle,
+.success {
+    color: #eadcff;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+input {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 15px;
+
+    border: 2px solid transparent;
+    border-radius: 15px;
+
+    outline: none;
+
+    background: white;
+
+    color: #4c1d95;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    transition: .3s;
+}
+
+input:focus {
+    border-color: #c084fc;
+
+    box-shadow:
+        0 0 20px #c084fc66;
+}
+
+input::placeholder {
+    color: #a78bba;
+}
+
+button {
+    margin-top: 15px;
+
+    padding: 14px 28px;
+
+    border: none;
+    border-radius: 15px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c084fc,
+            #9333ea
+        );
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px #9333ea66;
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+#error {
+    min-height: 23px;
+
+    margin-top: 15px;
+
+    color: #fecaca;
+
+    font-weight: bold;
+}
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    50% {
+        transform: translateX(8px);
+    }
+
+    75% {
+        transform: translateX(-8px);
+    }
+}
+
+
+/* =========================
+   ENVELOPE SCREEN
+========================= */
+
+#envelopeSection {
+    display: none;
+
+    animation: fadeIn .8s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   ENVELOPE STAGE
+========================= */
+
+.envelope-stage {
+
+    position: relative;
+
+    width: 100%;
+
+    /*
+       Space for the paper
+       to rise into.
+    */
+    height: 470px;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   ENVELOPE WRAPPER
+
+   IMPORTANT:
+   CLOSED = overflow hidden
+========================= */
+
+.envelope-wrapper {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 45px;
+
+    transform: translateX(-50%);
+
+    width: 300px;
+    height: 200px;
+
+    cursor: pointer;
+
+    /*
+       THIS IS THE IMPORTANT FIX.
+       While closed, anything outside
+       the envelope is invisible.
+    */
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    z-index: 5;
+}
+
+
+/*
+   When opened, allow the paper
+   to come outside.
+*/
+
+.envelope-wrapper.open {
+    overflow: visible;
+}
+
+
+/* =========================
+   ENVELOPE BODY
+========================= */
+
+.envelope-body {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #a855f7;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.45);
+
+    overflow: visible;
+}
+
+
+/* =========================
+   PAPER
+
+   CLOSED:
+   Completely BELOW envelope.
+
+   OPEN:
+   Slides upward.
+========================= */
+
+.paper {
+
+    position: absolute;
+
+    width: 88%;
+
+    left: 6%;
+
+    /*
+       Put it BELOW the envelope.
+    */
+    top: 180px;
+
+    min-height: 300px;
+
+    padding: 20px 17px;
+
+    background: #ffffff;
+
+    color: #4c1d95;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    text-align: center;
+
+    /*
+       Behind the envelope front
+       while closed.
+    */
+    z-index: 2;
+
+    transition:
+        top 1s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+/* Paper heading */
+
+.paper h2 {
+
+    margin: 0 0 12px;
+
+    color: #7e22ce;
+
+    font-size: 23px;
+}
+
+
+/* Paper text */
+
+.paper p {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+.paper b {
+    color: #7e22ce;
+}
+
+
+/* =========================
+   ENVELOPE FRONT
+
+   This completely covers
+   the paper while closed.
+========================= */
+
+.envelope-front {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #7e22ce;
+
+    /*
+       Envelope pocket shape
+    */
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 12px;
+
+    /*
+       ALWAYS above paper.
+    */
+    z-index: 4;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   TOP FLAP
+========================= */
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 110px;
+
+    background: #9333ea;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 100%,
+            100% 0
+        );
+
+    transform-origin: top center;
+
+    z-index: 6;
+
+    transition:
+        transform .8s ease;
+}
+
+
+/* =========================
+   OPEN ANIMATION
+========================= */
+
+
+/*
+   Open flap.
+*/
+
+.envelope-wrapper.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+
+    z-index: 1;
+}
+
+
+/*
+   Move paper out.
+
+   It starts at top:180px
+   and moves to top:-280px.
+
+   Therefore it comes from
+   INSIDE the envelope.
+*/
+
+.envelope-wrapper.open .paper {
+
+    top: -280px;
+
+    z-index: 10;
+}
+
+
+/*
+   Keep front behind the paper
+   only after it has come out.
+*/
+
+.envelope-wrapper.open .envelope-front {
+
+    z-index: 3;
+}
+
+
+/* =========================
+   CLICK MESSAGE
+========================= */
+
+.click-message {
+
+    position: absolute;
+
+    bottom: 5px;
+
+    width: 100%;
+
+    color: #eadcff;
+
+    font-size: 14px;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        opacity: .55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   CELEBRATION
+========================= */
+
+.celebration {
+
+    margin-top: 5px;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    animation: fadeIn 1s ease;
+}
+
+.celebration small {
+    font-size: 14px;
+    color: #eadcff;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .container {
+        padding: 28px 18px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .emoji {
+        font-size: 48px;
+    }
+
+    .envelope-stage {
+        height: 440px;
+    }
+
+    .envelope-wrapper {
+        width: 270px;
+        height: 180px;
+
+        bottom: 35px;
+    }
+
+    .paper {
+
+        width: 92%;
+        left: 4%;
+
+        min-height: 285px;
+
+        padding: 17px 14px;
+
+        top: 160px;
+    }
+
+    .paper h2 {
+        font-size: 20px;
+    }
+
+    .paper p {
+        font-size: 12.5px;
+        line-height: 1.45;
+    }
+
+    .envelope-flap {
+        height: 100px;
+    }
+
+    .envelope-wrapper.open .paper {
+        top: -270px;
+    }
+}
+
+
+@media (max-width: 350px) {
+
+    .envelope-wrapper {
+        width: 240px;
+        height: 160px;
+    }
+
+    .paper {
+        top: 145px;
+        min-height: 270px;
+    }
+
+    .paper h2 {
+        font-size: 18px;
+    }
+
+    .paper p {
+        font-size: 11.5px;
+    }
+
+    .envelope-wrapper.open .paper {
+        top: -255px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart" style="left:5%;animation-duration:8s;">💜</div>
+<div class="heart" style="left:20%;animation-duration:10s;animation-delay:2s;">♡</div>
+<div class="heart" style="left:40%;animation-duration:7s;animation-delay:1s;">💜</div>
+<div class="heart" style="left:60%;animation-duration:11s;animation-delay:3s;">♡</div>
+<div class="heart" style="left:80%;animation-duration:8s;animation-delay:1s;">💜</div>
+<div class="heart" style="left:92%;animation-duration:9s;animation-delay:4s;">♡</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- =========================
+         PASSWORD
+    ========================== -->
+
+    <div id="lockScreen">
+
+        <div class="emoji">
+            🔐
+        </div>
+
+        <h1>
+            A Little Surprise 💜
+        </h1>
+
+        <p class="subtitle">
+            Hmm... this little surprise is locked.
+            <br>
+            Only someone special knows the password 👀
+        </p>
+
+
+        <input
+            id="passcode"
+            type="password"
+            placeholder="Enter the secret passcode"
+            autocomplete="off"
+        >
+
+
+        <button onclick="checkPassword()">
+            Unlock 💜
+        </button>
+
+
+        <p id="error"></p>
+
+    </div>
+
+
+
+    <!-- =========================
+         UNLOCKED
+    ========================== -->
+
+    <div id="envelopeSection">
+
+        <div class="emoji">
+            🎓
+        </div>
+
+        <h1>
+            You Unlocked It! 💜
+        </h1>
+
+        <p class="success">
+            There's something waiting for you...
+            <br>
+            Click the envelope 💌
+        </p>
+
+
+
+        <!-- ENVELOPE -->
+
+        <div class="envelope-stage">
+
+
+            <div
+                class="envelope-wrapper"
+                id="envelope"
+                onclick="openEnvelope()"
+            >
+
+
+                <div class="envelope-body">
+
+
+                    <!-- =================
+                         PAPER
+                    ================== -->
+
+                    <div class="paper">
+
+                        <h2>
+                            GOOD LUCK MY MASTER! 💜
+                        </h2>
+
+                        <p>
+
+                            Hey Jer! 🥹
+
+                            <br><br>
+
+                            <b>
+                                GOOD LUCK ON YOUR EXAM!!! 🎓💜
+                            </b>
+
+                            <br><br>
+
+                            I know you can do it.
+                            Believe in yourself and trust
+                            everything you've studied.
+
+                            <br><br>
+
+                            Don't overthink.
+                            Take a deep breath,
+                            stay calm, and just do your best.
+
+                            <br><br>
+
+                            I'm already so proud of you! 🫶
+
+                            <br><br>
+
+                            You've got this, my cutie jer.
+                            Go get that exam! ✨
+
+                            <br><br>
+
+                            <b>
+                                I LOVE YOU! 💜
+                            </b>
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================
+                         FRONT POCKET
+                    ================== -->
+
+                    <div class="envelope-front"></div>
+
+
+                    <!-- =================
+                         TOP FLAP
+                    ================== -->
+
+                    <div class="envelope-flap"></div>
+
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="click-message"
+                id="clickMessage"
+            >
+                💌 Click the envelope to open it 💌
+            </div>
+
+
+        </div>
+
+
+        <!-- CELEBRATION -->
+
+        <div
+            id="celebration"
+            class="celebration hidden"
+        >
+
+            🎉 💜 🥳 💜 🎉
+
+            <br>
+
+            <small>
+                You got this, baby! ✨
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================
+   CHANGE PASSWORD HERE
+========================= */
+
+const SECRET_PASSCODE = "143";
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function checkPassword() {
+
+    const input =
+        document.getElementById("passcode");
+
+    const error =
+        document.getElementById("error");
+
+
+    if (input.value === SECRET_PASSCODE) {
+
+        document
+            .getElementById("lockScreen")
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById("envelopeSection")
+            .style
+            .display = "block";
+
+
+    } else {
+
+        error.textContent =
+            "❌ Wrong passcode... try again, love!";
+
+        input.value = "";
+
+        input.style.animation =
+            "shake .4s";
+
+        setTimeout(() => {
+
+            input.style.animation = "";
+
+        }, 400);
+
+    }
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+document
+    .getElementById("passcode")
+    .addEventListener(
+        "keypress",
+        function(event) {
+
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+
+        }
+    );
+
+
+/* =========================
+   OPEN ENVELOPE
+========================= */
+
+function openEnvelope() {
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const clickMessage =
+        document.getElementById("clickMessage");
+
+    const celebration =
+        document.getElementById("celebration");
+
+
+    if (
+        envelope.classList.contains("open")
+    ) {
+        return;
+    }
+
+
+    envelope.classList.add("open");
+
+
+    clickMessage.classList.add("hidden");
+
+
+    setTimeout(() => {
+
+        celebration
+            .classList
+            .remove("hidden");
+
+    }, 1000);
+
+
+    createConfetti();
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti() {
+
+    const colors = [
+        "#c084fc",
+        "#a855f7",
+        "#9333ea",
+        "#e9d5ff",
+        "#ffffff"
+    ];
+
+
+    for (let i = 0; i < 80; i++) {
+
+        const piece =
+            document.createElement("div");
+
+
+        piece.style.position = "fixed";
+
+        piece.style.width = "8px";
+
+        piece.style.height = "8px";
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random() * colors.length
+                )
+            ];
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.top = "-10px";
+
+        piece.style.zIndex = "9999";
+
+        piece.style.borderRadius = "50%";
+
+
+        document.body.appendChild(piece);
+
+
+        const duration =
+            Math.random() * 3 + 2;
+
+
+        piece.animate(
+
+            [
+                {
+                    transform:
+                        "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translateY(110vh) rotate(${Math.random() * 1000}deg)`,
+                    opacity: 0
+                }
+            ],
+
+            {
+                duration:
+                    duration * 1000,
+
+                easing:
+                    "ease-out"
+            }
+
+        );
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, duration * 1000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
